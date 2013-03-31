@@ -1,7 +1,7 @@
 // (c) Copyright 2005.  Adobe Systems, Incorporated.  All rights reserved.
 
 /*
-@@@BUILDINFO@@@ Auto Save PSD.jsx 1.0
+@@@BUILDINFO@@@ Auto Save PSD.jsx 1.2
 */
 
 var begDesc = "$$$/JavaScripts/AutoSavePSD/Description=This script is designed to be used as a script that runs after a save event. The script will save a copy of the current PSD document in a new folder ( current_filename_autoSave ) next to the current active document." // endDesc
@@ -24,8 +24,9 @@ try {
     var doc = activeDocument;
     var data = GetDataFromDocument( doc );
 
-    if ( data.extension.toLowerCase() == 'psd' ) {
+    if ( doc.activeLayer.allLocked && data.extension.toLowerCase() == 'psd' ) {
         AutoSavePSD( data );
+        doc.activeLayer.allLocked = false;
     }
 
 } // try end
