@@ -8,7 +8,7 @@
 /*
 
     <javascriptresource>
-    <name>$$$/JavaScripts/AutoSavePSD/Menu=Auto Save PSD...</name>
+    <name>$$$/JavaScripts/AutoSavePSD/Menu=Auto Save PSD</name>
     <category>Auto Save</category>
     <enableinfo>true</enableinfo>
     <eventid>64feff0a-8271-436f-8c59-d2105497d902</eventid>
