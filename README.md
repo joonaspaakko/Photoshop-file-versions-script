@@ -10,7 +10,7 @@ This comes in handy if you feel like doing something new. Just press the shortcu
 
 * **Download the files**: `Auto Save PSD.jsx` and `Auto Save PSD.atn`
 * **Auto Save PSD.jsx**: Put this file in `{Photoshop_root}\Presets\Scripts\Auto Save PSD.jsx`
-  * Next time you open photoshop you will find the script in: `File > Scripts > Auto Save PSD...`. If photoshop is already running, restart it.
+  * Next time you open photoshop you will find the script in: `File > Scripts > Auto Save PSD`. If photoshop is already running, restart it.
 * **Auto Save PSD.atn**: Double click this file so that it is added to photoshop.
   * You can make sure that it was added by going to: `Window > Actions` and making sure that you an find `Auto Save PSD` folder at the bottom of your Actions panel.
 * **Add a shortcut in photoshop**: 
@@ -26,7 +26,7 @@ This comes in handy if you feel like doing something new. Just press the shortcu
 * Depending on the situation you might want to save a new file by using the script, so that the very first save will also be saved separately.
 * The script will find the required Photoshop Action (`Auto Save PSD.atn`) automatically when needed, as long as you've added it into photoshop. 
 * The Action is used to run a normal `save` command to prompt a `save as dialog` when you are doing the first file save with the script.
-* Although setting up a keyboard shotcut is highly recommended, you can still run the script from: `File > Scripts > Auto Save PSD...`.
+* Although setting up a keyboard shotcut is highly recommended, you can still run the script from: `File > Scripts > Auto Save PSD`.
  * The shortcut you've set in `Keyboard shortcuts...` will be shown in the menu path shown above. So if you forget it, that might be easiest way to find out what it is.
 * The current naming format for the files is: `{Original_filename} Year-Month-Day-Hour-Minute-Second.psd`
 
