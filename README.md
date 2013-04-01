@@ -12,7 +12,7 @@ This comes in handy if you feel like doing something new. Just press the shortcu
 * **Auto Save PSD.jsx**: Put this file in `{Photoshop_root}\Presets\Scripts\Auto Save PSD.jsx`
   * Next time you open photoshop you will find the script in: `File > Scripts > Auto Save PSD...`. If photoshop is already running, restart it.
 * **Auto Save PSD.atn**: Double click this file so that it is added to photoshop.
-  * You can make sure that it was added by going to: `Window > Actions` and making sure that you an find `Auto Save PSD` folder at the bottom of your Actions panel.
+  * You can make sure that it was added by going to: `Window > Actions` and making sure that you can find `Auto Save PSD` folder at the bottom of your Actions panel.
 * **Add a shortcut in photoshop**: 
   * `Edit > Keyboard shortcuts...` ( Mac: `Alt + Shift + Cmd + K`. Windows: `Alt + Shift + Ctrl + K` )
     * Choose `Shortcuts for: [Applications menus]`
