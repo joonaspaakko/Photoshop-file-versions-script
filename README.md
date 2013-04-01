@@ -16,6 +16,6 @@ Enables you to easily save important milestones in your photoshop workflow as se
   * **Install complete**
 
 ## Things you should know
-* You might want to save new file using the script so that the very first save will be saves separately.
+* You might want to save new file by using the script, so that the very first save will also be saved separately.
 * A document needs to be open for the script to do anything.
 * The script will find 'Auto Save PSD.atn' automatically when needed, as long as you've added it to photoshop. 
