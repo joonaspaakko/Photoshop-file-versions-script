@@ -20,9 +20,17 @@ This comes in handy if you feel like doing something new. Just press the shortcu
 * **Install complete**
 
 ## Things you should know
+
+* This script was written for Photoshop CS 6. Chances are that it might work in some older versions, but I have no idea.
 * A document needs to be open for the script to do anything.
 * Depending on the situation you might want to save a new file by using the script, so that the very first save will also be saved separately.
 * The script will find the required Photoshop Action (`Auto Save PSD.atn`) automatically when needed, as long as you've added it into photoshop. 
 * The Action is used to run a normal `save` command to prompt a `save as dialog` when you are doing the first file save with the script.
 * Although setting up a keyboard shotcut is highly recommended, you can still run the script from: `File > Scripts > Auto Save PSD...`.
  * The shortcut you've set in `Keyboard shortcuts...` will be shown in the menu path shown above. So if you forget it, that might be easiest way to find out what it is.
+* The current naming format for the files is: `{Original_filename} Year-Month-Day-Hour-Minute-Second.psd`
+
+## Possible changes?
+
+* New naming system. I'm not sure how this could be done, but the current file naming is not ideal.
+* Scripting functionality that enables me to get rid of the Action file. It's not super cumbersome to *install* it, but I'd rather get rid of it.
