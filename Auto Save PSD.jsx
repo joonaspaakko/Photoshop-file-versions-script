@@ -1,6 +1,4 @@
-// (c) Copyright 2005.  Adobe Systems, Incorporated.  All rights reserved.
-
-// Auto Save PSD.jsx 1.3.
+// Auto Save PSD.jsx 1.4.
 // This file was modified out of "Save Extra JPEG.jsx".
 // Modifications by Joonas Pääkkö
 // https://github.com/joonaspaakko
@@ -25,15 +23,13 @@ $.localize = true;
 try {
 
     // Get the currently active document.
-    var doc = app.activeDocument;
+    var doc         = app.activeDocument;
 
-    // If document has been saved once...
-    if ( doc.saved ) {
-        // One document save is needed so that we know where to save the psd.
-        doc.save();
-    }
-    // Document has not been saved yet...
-    else {
+    // Find out of the file has an extension
+    var noExtension = doc.name.indexOf('.') == -1;
+
+    // No file extension = File has not been saved yet
+    if ( noExtension ) {
 
         // An action is triggered to prompt save as dialog.
         // You'd think that this would be easy to do, but I
@@ -41,92 +37,60 @@ try {
         app.doAction('save','Auto Save PSD');
 
     }
+    // Extension exists = File has been saved at least once
+    else {
 
-    // Save additional psd file...
-    var data = GetDataFromDocument( doc );
-    AutoSavePSD( doc, data );
+        // Save the original file.
+        doc.save();
 
+    }
 
+    AutoSavePSD( doc );
 
 } // try end
 
 catch( e ) {
-    // always wrap your script with try/catch blocks so you don't stop production
     // remove comments below to see error for debugging
     // alert( e );
 }
 
+function AutoSavePSD( doc, docName ) {
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
+    // Extenstion
+    var psd                   = '.psd';
 
+    // Document name
+    var docName               = doc.name;
 
-///////////////////////////////////////////////////////////////////////////////
-// Function: AutoSavePSD
-// Use: save the current document as a copy
-// Input: a document must be active
-// Params: folder, filename, extension
-// Output: file saved as a copy next to the current active document
-///////////////////////////////////////////////////////////////////////////////
-function AutoSavePSD( doc, data ) {
+    // Document path
+    var docPath               = doc.path;
 
+    // Gets rid of the extension
+    var docName               = docName.substring( 0, docName.indexOf('.') );
 
-        // Save as .psd
-        var psd_Opt = new PhotoshopSaveOptions();
-        psd_Opt.layers = true; // Preserve layers.
-        psd_Opt.embedColorProfile = true; // Preserve color profile.
-        psd_Opt.annotations = true; // Preserve annonations.
-        psd_Opt.alphaChannels = true; // Preserve alpha channels.
+    // Construct the Auto Save folder path
+    var autoSavePath          = docPath + '/' + docName + ' (AutoSave)';
 
-         // Excuse me sir. What time is it? ...where am I?
-        var time                      = new Date();
-        var seconds                   = time.getSeconds();
-        var sec                       = seconds < 10 ? '0' + seconds : seconds;
-        var minutes                   = time.getMinutes();
-        var min                       = minutes < 10 ? '0' + minutes : minutes;
-        var hours                     = time.getHours();
-        var hour                      = hours < 10 ? '0' + hours : hours;
-        var day                       = time.getDate();
-        var dd                        = day < 10 ? '0' + day : day;
-        var month                     = time.getMonth() + 1;
-        var mm                        = month < 10 ? '0' + month : month;
-        var yyyy                      = time.getFullYear();
-        var date                      =  yyyy + '-' + mm + '-' + dd + '-' + hour + '-' + min + '-' + sec;
+    // If Auto Save folder doesn't exist, make one.
+    var autoSaveFolder        = new Folder( autoSavePath );
+    if( !autoSaveFolder.exists ) { autoSaveFolder.create(); }
 
-        // New folder for the auto saves...
-        var fileName                  = data.fileName;
-        var folderPath                = data.folder + '/' + fileName + ' (-autoSave-)/';
-        var asFolder                  = new Folder( folderPath );
+    // Get list of all the current auto saved files
+    // Lists only those files .psd that share the same file
+    var currentAS             = autoSaveFolder.getFiles( docName + '*' + psd );
 
-        // If folder doesn't exist, let's create one.
-        if( !asFolder.exists ) asFolder.create();
+    // Get the number of those files and add one to it
+    var suffix                = currentAS.length + 1;
 
-        // Creates the additional .psd file.
-        doc.saveAs( File( folderPath + fileName + ' ' + date + '.psd' ), psd_Opt, true );
-}
+    // Options for the soon to be Auto Saved PSD file
+    var psd_Opt               = new PhotoshopSaveOptions();
+    psd_Opt.layers            = true; // Preserve layers.
+    psd_Opt.embedColorProfile = true; // Preserve color profile.
+    psd_Opt.annotations       = true; // Preserve annonations.
+    psd_Opt.alphaChannels     = true; // Preserve alpha channels.
+    psd_Opt.spotColors        = true; // Preserve spot colors.
 
-///////////////////////////////////////////////////////////////////////////////
-// Function: GetDataFromDocument
-// Usage: pull data about the document passed in
-// Input: document to gather data
-// Output: Object containing folder, fileName, fileType, extension
-///////////////////////////////////////////////////////////////////////////////
-function GetDataFromDocument( inDocument ) {
+    // Save active document in the Auto Save folder
+    doc.saveAs( File( autoSavePath + '/' + docName + ' ' + suffix + psd ), psd_Opt, true );
 
-    var data           = new Object();
-    var fullPathStr    = inDocument.fullName.toString();
-    var lastDot        = fullPathStr.lastIndexOf( "." );
-    var fileNameNoPath = fullPathStr.substr( 0, lastDot );
-    var lastSlash      = fullPathStr.lastIndexOf( "/" );
-
-    data.extension     = fullPathStr.substr( lastDot + 1, fullPathStr.length );
-    data.fileName      = fileNameNoPath.substr( lastSlash + 1, fileNameNoPath.length );
-    data.folder        = fileNameNoPath.substr( 0, lastSlash );
-    data.fileType      = inDocument.fullName.type;
-
-    return data;
-
-}
+} // AutoSavePSD() end
