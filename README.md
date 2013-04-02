@@ -32,3 +32,4 @@ This comes in handy if you feel like doing something new. Just press the shortcu
 
 ## Possible changes?
 * Scripting functionality that enables me to get rid of the Action file. It's not super cumbersome to *install*, but I'd rather get rid of it.
+* Name change to something more fitting.
