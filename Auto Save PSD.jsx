@@ -1,6 +1,5 @@
 // Auto Save PSD.jsx 1.4.
-// This file was modified out of "Save Extra JPEG.jsx".
-// Modifications by Joonas Pääkkö
+// by Joonas Pääkkö
 // https://github.com/joonaspaakko
 
 /*
