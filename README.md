@@ -33,3 +33,7 @@ This comes in handy if you feel like doing something new. Just press the shortcu
 ## Possible changes?
 * Scripting functionality that enables me to get rid of the Action file. It's not super cumbersome to *install*, but I'd rather get rid of it.
 * Name change to something more fitting.
+* Some sort of notification system to inform user that the file has been saved. 
+  * Currently you need to just trust that the script saves the file.
+  * If you accidentally press another key combination to save the file, you'd have no idea that the additional `.psd` file wasn't saved.
+     * Assuming that this notification was implemented. The lack of notification would help you to realize the mistake.
