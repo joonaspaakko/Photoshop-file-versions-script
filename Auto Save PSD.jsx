@@ -92,4 +92,6 @@ function AutoSavePSD( doc, docName ) {
     // Save active document in the Auto Save folder
     doc.saveAs( File( autoSavePath + '/' + docName + ' ' + suffix + psd ), psd_Opt, true );
 
+    app.beep();
+
 } // AutoSavePSD() end
