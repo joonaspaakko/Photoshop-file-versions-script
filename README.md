@@ -23,9 +23,9 @@ You can just open the `.jsx` file in Photoshop to run it or alternative set a sh
    - You can find it in the Photoshop install folder. For example (Mac): `/Applications/Adobe Photoshop CC 2019/Presets/Scripts`.
 2. Restart Photoshop
 3. Add the shortcut in `Edit > Keyboard shortcuts...` ( Mac: `Alt + Shift + Cmd + K`. Windows: `Alt + Shift + Ctrl + K` )
-   1. Choose `Shortcuts for: [Applications menus]`
-     2. Find `File > Scripts > Photoshop File Versions`
-     3. Add a shortcut, then press `Accept` and `Ok` [![Keyboard shotcuts](readme_img/Shortcut.png)](![Keyboard shotcuts](readme_img/Shortcut.png)
+   * Choose `Shortcuts for: [Applications menus]`
+   * Find `File > Scripts > Photoshop File Versions`
+   * [Add a shortcut](readme_img/Shortcut.png) (something like `Cmd+Ctrl+S`), then press `Accept` and `Ok`.
      
 > It is possible to set the script to run every time you save a document with the native shortcuts, but I would not recommend that because then you would obviously be saving extra versions every single time you save. It makes more sense to only save the new version when you feel you got something worth keeping.
      
@@ -36,6 +36,6 @@ Third party applications are a great way to offer different ways to trigger scri
 ## Things you should know
 
 * Version 1.5. tested in Photoshop CC 2019
-   * Prior versions were tested in CS3 and CS6, but I can't that is the case anymore.
+   * Prior versions were tested in CS3 and CS6, but I can't say for certain it works in older versions anymore.
 * A document needs to be open for the script to do anything.
- * If you forget the shortcut set in Photoshop, you can check it at `File > Scripts > Photoshop File Versions`
+* If you forget the shortcut you set in Photoshop, you can check it at `File > Scripts > Photoshop File Versions`
