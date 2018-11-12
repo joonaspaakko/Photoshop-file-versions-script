@@ -29,7 +29,7 @@ You can just open the `.jsx` file in Photoshop to run it or alternative set a sh
      
 > It is possible to set the script to run every time you save a document with the native shortcuts, but I would not recommend that because then you would obviously be saving extra versions every single time you save. It makes more sense to only save the new version when you feel you got something worth keeping.
      
-**Set shortcut with party applications**
+**Set shortcut with 3rd party applications**
 
 Third party applications are a great way to offer different ways to trigger scripts as well as sync scripts from computer to computer. Read more about that here: https://graphicdesign.stackexchange.com/a/63446/2332 - This post is about Illustrator but applies to Photoshop as well.
 
