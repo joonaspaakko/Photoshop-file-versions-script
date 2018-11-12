@@ -1,39 +1,41 @@
-# Auto Save PSD script for Photoshop
+# Photoshop file versions script
 
-You can define a keyboard shortcut that will not only save your file, but an additional `.psd` file as well.
+Saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in adjacent folder "My file (Versions)".
 
-This comes in handy if you feel like doing something new. Just press the shortcut key and continue working on the new design. If you feel like going back to the older design, the file can be found next to the original in a folder.
+![Example of saved psd files](readme_img/Example.png)
 
-![Example of saved psd files](readme_img/Example.jpg)
+## Options
 
-## Install
+You can find these variables at the top of the `Photoshop File Versions.jsx` file.
 
-* **Download the files**: `Auto Save PSD.jsx` and `Auto Save PSD.atn`
-* **Auto Save PSD.jsx**: Put this file in `{Photoshop_root}\Presets\Scripts\Auto Save PSD.jsx`
-  * Next time you open photoshop you will find the script in: `File > Scripts > Auto Save PSD...`. If photoshop is already running, restart it.
-* **Auto Save PSD.atn**: Double click this file so that it is added to photoshop.
-  * You can make sure that it was added by going to: `Window > Actions` and making sure that you an find `Auto Save PSD` folder at the bottom of your Actions panel.
-* **Add a shortcut in photoshop**:
-  * `Edit > Keyboard shortcuts...` ( Mac: `Alt + Shift + Cmd + K`. Windows: `Alt + Shift + Ctrl + K` )
-    * Choose `Shortcuts for: [Applications menus]`
-    * `File > Scripts > Auto Save PSD`. ( After opening `File` you need to scroll down quite a bit to find `Scripts` ) ![Keyboard shotcuts](readme_img/Shortcut.jpg)
-* **Install complete**
+Both of these are either `true` or `false`.
+
+* `notify` An optional alert that shows the name of the saved file on save. This helps make a mental note of which version is which.
+* `shortDescription` An optional prompt for adding a small description in the filename. I would recommend 3-4 words max.
+
+## How to use
+
+You can just open the `.jsx` file in Photoshop to run it or alternative set a shortcut to run it, which is recommended.
+
+**Set shortcut natively**
+
+1. Put `Photoshop File Versions.jsx` in PS Scripts folder.
+   - You can find it in the Photoshop install folder. For example (Mac): `/Applications/Adobe Photoshop CC 2019/Presets/Scripts`.
+2. Restart Photoshop
+3. Add the shortcut in `Edit > Keyboard shortcuts...` ( Mac: `Alt + Shift + Cmd + K`. Windows: `Alt + Shift + Ctrl + K` )
+   1. Choose `Shortcuts for: [Applications menus]`
+     2. Find `File > Scripts > Photoshop File Versions`
+     3. Add a shortcut, then press `Accept` and `Ok` [![Keyboard shotcuts](readme_img/Shortcut.png)](![Keyboard shotcuts](readme_img/Shortcut.png)
+     
+> It is possible to set the script to run every time you save a document with the native shortcuts, but I would not recommend that because then you would obviously be saving extra versions every single time you save. It makes more sense to only save the new version when you feel you got something worth keeping.
+     
+**Set shortcut with party applications**
+
+Third party applications are a great way to offer different ways to trigger scripts as well as sync scripts from computer to computer. Read more about that here: https://graphicdesign.stackexchange.com/a/63446/2332 - This post is about Illustrator but applies to Photoshop as well.
 
 ## Things you should know
 
-* The script has been tested in Photoshop cs3 and cs6 in Mac os x 10.8.3
+* Version 1.5. tested in Photoshop CC 2019
+   * Prior versions were tested in CS3 and CS6, but I can't that is the case anymore.
 * A document needs to be open for the script to do anything.
-* Depending on the situation you might want to save a new file by using the script, so that the very first save will also be saved separately.
-* The script will find the required Photoshop Action (`Auto Save PSD.atn`) automatically when needed, as long as you've added it into photoshop.
-* The Action is used to run a normal `save` command to prompt a `save as dialog` when you are doing the first file save with the script.
-* Although setting up a keyboard shotcut is highly recommended, you can still run the script from: `File > Scripts > Auto Save PSD...`.
- * The shortcut you've set in `Keyboard shortcuts...` will be shown in the menu path shown above. So if you forget it, that might be easiest way to find out what it is.
-* The new file name system saves incremental numbers before the `.psd extension.
-
-## Possible changes?
-* Scripting functionality that enables me to get rid of the Action file. It's not super cumbersome to *install*, but I'd rather get rid of it.
-* Name change to something more fitting.
-* Some sort of notification system to inform user that the file has been saved. 
-  * Currently you need to just trust that the script saves the file.
-  * If you accidentally press another key combination to save the file, you'd have no idea that the additional `.psd` file wasn't saved.
-     * Assuming that this notification was implemented. The lack of notification would help you to realize the mistake.
+ * If you forget the shortcut set in Photoshop, you can check it at `File > Scripts > Photoshop File Versions`
