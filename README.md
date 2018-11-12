@@ -1,6 +1,6 @@
 # Photoshop file versions script
 
-Saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in adjacent folder "My file (Versions)".
+Saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in a folder "My file (Versions)".
 
 ![Example of saved psd files](readme_img/Example.png)
 
