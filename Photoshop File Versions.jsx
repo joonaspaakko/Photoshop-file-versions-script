@@ -60,11 +60,10 @@ catch( e ) {
 function saveNewVersion( doc, docName ) {
 
   var psd         = '.psd';
-  var fullDocName = doc.name;
-  var docName     = fullDocName.substring(0, fullDocName.lastIndexOf('.'));
+  var docName     = doc.name.substring(0, doc.name.lastIndexOf('.'));
   var docPath     = doc.path;
 	
-  var outputPath = docPath + '/' + docName + versionsFolderName;
+  var outputPath = docPath + '/' + doc.name + versionsFolderName;
 	
   // If output folder doesn't exist, make one.
   var outputFolder = new Folder( outputPath );
