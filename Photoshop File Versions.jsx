@@ -92,6 +92,9 @@ function saveNewVersion( doc, docName ) {
 			shortDescription = '';
 		}
 	}
+	else {
+		shortDescription = '';
+	}
 	
   var psd_Opt               = new PhotoshopSaveOptions();
   psd_Opt.layers            = true; // Preserve layers.
