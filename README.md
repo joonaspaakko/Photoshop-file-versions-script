@@ -1,28 +1,32 @@
 # Photoshop file versions script
 
-Saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in a folder "My file (Versions)".
+Saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in a folder: "Your Photoshop Document.psd (Versions)".
 
 ![Example of saved psd files](readme_img/Example.png)
+
 
 ## Options
 
 You can find these variables at the top of the `Photoshop File Versions.jsx` file.
 
-Both of these are either `true` or `false`.
+| Variable | Type | Description |
+|--------------------|---------|------------------------------------------------------------------------------------------------------------------------|
+| `notify` | Boolean | Optional alert that shows the name of the saved file on save. This helps make a mental note of which version is which. |
+| `shortDescription` | Boolean | Optional prompt for adding a small description in the filename. I would recommend 3-5 words max. |
+| `useDocName` | Boolean | Use document name in the version filename. |
 
-* `notify` An optional alert that shows the name of the saved file on save. This helps make a mental note of which version is which.
-* `shortDescription` An optional prompt for adding a small description in the filename. I would recommend 3-4 words max.
+Filenaming [examples](https://github.com/joonaspaakko/Photoshop-file-versions-script/issues/3#issue-380111302)
 
 ## How to use
 
-You can just open the `.jsx` file in Photoshop to run it or alternative set a shortcut to run it, which is recommended.
+You can just open the `.jsx` file in Photoshop to run it or alternatively, you can set a shortcut to run it, which is recommended.
 
 **Set shortcut natively**
 
 1. Put `Photoshop File Versions.jsx` in PS Scripts folder.
    - You can find it in the Photoshop install folder. For example (Mac): `/Applications/Adobe Photoshop CC 2019/Presets/Scripts`.
 2. Restart Photoshop
-3. Add the shortcut in `Edit > Keyboard shortcuts...` ( Mac: `Alt + Shift + Cmd + K`. Windows: `Alt + Shift + Ctrl + K` )
+3. Add the shortcut in `Edit > Keyboard shortcuts...`
    * Choose `Shortcuts for: [Applications menus]`
    * Find `File > Scripts > Photoshop File Versions`
    * [Add a shortcut](readme_img/Shortcut.png) (something like `Cmd+Ctrl+S`), then press `Accept` and `Ok`.
