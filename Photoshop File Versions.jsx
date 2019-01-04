@@ -1,9 +1,12 @@
-// Auto Save PSD.jsx 1.6.
+// Auto Save PSD.jsx 1.7.
 // Author: Joonas Pääkkö
 // https://github.com/joonaspaakko/Photoshop-file-versions-script
 
 // Changelog:
 // ==========
+
+// 1.7.
+// - Added: PNG & JPG export option.
 
 // 1.6.
 // - Change: versions folder name by including .psd extension. Sorting is a bit better like this.
@@ -23,6 +26,7 @@
 
 #target photoshop
 
+var additionalExport   = 'jpeg'; // Accepted values: false, 'jpg', 'png'
 var notify             = true; // Boolean. Shows the newly saved verions full filename after saving.
 var shortDescription   = true; // Boolean. A prompt where use can describe changes briefly. Leaving the description empty does the same thing as canceling.
 var useDocName         = true; // Boolean. You can use this to get more room for the description.
@@ -56,11 +60,10 @@ try {
 		saveNewVersion( doc );
 	}
 
-
 }
 catch( e ) {
   // remove comments below to see error for debugging
-  // alert( e );
+  alert( e );
 }
 
 function saveNewVersion( doc, docName ) {
@@ -113,6 +116,11 @@ function saveNewVersion( doc, docName ) {
 	var verisonsList = outputFolder.getFiles( '*' + psd );
 	var versionsLength2 = verisonsList.length;
 	if ( notify && versionsLength1 < versionsLength2 ) {
+		
+		if ( additionalExport ) {
+			doc.exportDocument( File( outputPath + '/' + filename ), SAVEFORWEB, exportOptions );
+		}
+		
 		alert( 'File version saved: \n '+ filename );
 	}
 	else if ( notify && versionsLength1 >= versionsLength2 ) {
@@ -144,5 +152,23 @@ function getVersionNumber( docName, verisonsList ) {
 	}
 	
 	return number + 1;
+	
+}
+
+function exportOptions( format ) {
+	
+	var options = new exportoptionssaveforweb();
+	
+	options.format = format.toLowerCase() === 'png' ? SaveDocumentType.PNG : SaveDocumentType.JPEG;
+	options.quality = 100;
+	options.matteColor = {
+		RGBColor: {
+			red: 255,
+			green: 255,
+			blue: 0
+		}
+	};
+	
+	return options;
 	
 }
