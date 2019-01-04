@@ -9,11 +9,13 @@ Saves the `.psd` file twice. First, it saves the work file, just like you would 
 
 You can find these variables at the top of the `Photoshop File Versions.jsx` file.
 
-| Variable | Type | Description |
-|--------------------|---------|------------------------------------------------------------------------------------------------------------------------|
-| `notify` | Boolean | Optional alert that shows the name of the saved file on save. This helps make a mental note of which version is which. |
-| `shortDescription` | Boolean | Optional prompt for adding a small description in the filename. I would recommend 3-5 words max. |
-| `useDocName` | Boolean | Use document name in the version filename. |
+| Variable               | Type    | Description                                                                                                            |
+|------------------------|---------|------------------------------------------------------------------------------------------------------------------------|
+| **notify**             | Boolean | Optional alert that shows the name of the saved file on save. This helps make a mental note of which version is which. |
+| **shortDescription**   | Boolean | Optional prompt for adding a small description in the filename. I would recommend 3-5 words max.                      |
+| **useDocName**         | Boolean | Use document name in the version filename.                                                                            |
+| **versionsFolderName** | String  | This is a suffix for the versions folder: "My Document.psd (Versions)".                                                |
+| **additionalExport**   |         | Accepted values: false, 'jpg', 'png' (default: false)
 
 Filenaming [examples](https://github.com/joonaspaakko/Photoshop-file-versions-script/issues/3#issue-380111302)
 
@@ -41,5 +43,5 @@ Third party applications are a great way to offer different ways to trigger scri
 
 * Version 1.5. tested in Photoshop CC 2019
    * Prior versions were tested in CS3 and CS6, but I can't say for certain it works in older versions anymore.
-* A document needs to be open for the script to do anything.
+* You can always just press enter when you get the description prompt if you don't feel like adding one. 
 * If you forget the shortcut you set in Photoshop, you can check it at `File > Scripts > Photoshop File Versions`
