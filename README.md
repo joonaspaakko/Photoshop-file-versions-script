@@ -4,6 +4,7 @@ Saves the `.psd` file twice. First, it saves the work file, just like you would 
 
 ![Example of saved psd files](readme_img/Example.png)
 
+A quick video on using the script: https://youtu.be/Kvi7keEh_80
 
 ## Options
 
@@ -17,7 +18,7 @@ You can find these variables at the top of the `Photoshop File Versions.jsx` fil
 | **versionsFolderName** | String  | This is a suffix for the versions folder: "My Document.psd (Versions)".                                                |
 | **additionalExport**   | Boolean/String| Accepted values: false, 'jpg', 'png' (default: false)
 
-## File naming examples
+## File name examples
 
 **Minimal filename:**
 
