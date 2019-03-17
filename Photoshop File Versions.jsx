@@ -1,12 +1,16 @@
-// Auto Save PSD.jsx 1.7.
+// Photoshop File Versions.jsx 1.7.1
+// Former name: Auto Save PSD.jsx
 // Author: Joonas Pääkkö
 // https://github.com/joonaspaakko/Photoshop-file-versions-script
 
 // Changelog:
 // ==========
 
+// 1.7.1
+// - Due to human error, the last commit contained only part of the code meant to go online and wasn't really working properly.
+
 // 1.7.
-// - Added: PNG & JPG export option.
+// - Added: PNG & JPG export option. Variable name: "additionalExport".
 
 // 1.6.
 // - Change: versions folder name by including .psd extension. Sorting is a bit better like this.
@@ -26,18 +30,21 @@
 
 #target photoshop
 
-var additionalExport   = 'jpeg'; // Accepted values: false, 'jpg', 'png'
+// OPTIONS:
 var notify             = true; // Boolean. Shows the newly saved verions full filename after saving.
 var shortDescription   = true; // Boolean. A prompt where use can describe changes briefly. Leaving the description empty does the same thing as canceling.
 var useDocName         = true; // Boolean. You can use this to get more room for the description.
 var versionsFolderName = ' (Versions)'; // String. This is a suffix for the versions folder: "My Document.psd (Versions)".
+var additionalExport   = false; // Accepted values: false, 'jpg', 'png'
 
 try {
 
   var doc   = app.activeDocument;
+	var fileExists = false;
 	
-	// Cmd+S
 	try {
+		fileExists = doc.path;
+		// Cmd+S
 		doc.save();
 	}
 	// Cmd+Shift+S
@@ -53,17 +60,18 @@ try {
 		var idsaveSucceeded = stringIDToTypeID( "saveSucceeded" );
 		desc50.putEnumerated( idsaveStage, idsaveStageType, idsaveSucceeded );
 		executeAction( idsave, desc50, DialogModes.ALL );
+		fileExists = doc.path;
 	}
 	
-	// If the root file isn't saved, then don't save the new version either...
-	if ( doc.saved ) {
+	// If the root file hasn't been saved, then don't save the new version either...
+	if ( fileExists ) {
 		saveNewVersion( doc );
 	}
 
 }
 catch( e ) {
   // remove comments below to see error for debugging
-  alert( e );
+  // alert( e );
 }
 
 function saveNewVersion( doc, docName ) {
@@ -81,7 +89,7 @@ function saveNewVersion( doc, docName ) {
   // Get list of all the current auto saved files
   var verisonsList = outputFolder.getFiles( '*' + psd );
 	var versionsLength1 = verisonsList.length;
-	var number = getVersionNumber( docName, verisonsList );
+	var number = getVersionNumber( verisonsList );
 	
 	var descPrompt = null;
 	if ( shortDescription ) {
@@ -108,28 +116,37 @@ function saveNewVersion( doc, docName ) {
 	
   // Save active document in the Auto Save folder
 	var divider = (useDocName || descPrompt) ? ' - ' : '';
-	var filename = 'v' + number + divider + (useDocName ? docName : '') + shortDescription + psd;
-  doc.saveAs( File( outputPath + '/' + filename ), psd_Opt, true );
+	var filename = 'v' + number + divider + (useDocName ? docName : '') + shortDescription;
+  doc.saveAs( File( outputPath + '/' + filename + psd ), psd_Opt, true );
 
-  app.beep();
 	
 	var verisonsList = outputFolder.getFiles( '*' + psd );
 	var versionsLength2 = verisonsList.length;
-	if ( notify && versionsLength1 < versionsLength2 ) {
+
+	if ( versionsLength1 < versionsLength2 ) {
 		
 		if ( additionalExport ) {
-			doc.exportDocument( File( outputPath + '/' + filename ), SAVEFORWEB, exportOptions );
+			var extension = additionalExport === 'png' ? '.png' : '.jpg';
+			doc.exportDocument( File( outputPath + '/' + filename + extension ), ExportType.SAVEFORWEB, exportOptions( additionalExport ) );
+			var exportedFile = new File( outputPath + '/' + filename.split(' ').join('-') + extension );
+			exportedFile.rename( filename + extension );
 		}
-		
-		alert( 'File version saved: \n '+ filename );
+	
+	  app.beep();
 	}
-	else if ( notify && versionsLength1 >= versionsLength2 ) {
-		alert( 'Oopsies... File was not saved correctly' );
+	
+	if ( notify ) {
+		if ( versionsLength1 < versionsLength2 ) {
+			alert( 'File version saved: \n '+ filename );
+		}
+		else if ( versionsLength1 >= versionsLength2 ) {
+			alert( 'Oopsies... File was not saved correctly' );
+		}
 	}
 
 }
 
-function getVersionNumber( docName, verisonsList ) {
+function getVersionNumber( verisonsList ) {
 	
 	var number = 0;
 	for ( var i = 0; i < verisonsList.length; i++ ) {
@@ -157,17 +174,15 @@ function getVersionNumber( docName, verisonsList ) {
 
 function exportOptions( format ) {
 	
-	var options = new exportoptionssaveforweb();
+	var options = new ExportOptionsSaveForWeb();
 	
 	options.format = format.toLowerCase() === 'png' ? SaveDocumentType.PNG : SaveDocumentType.JPEG;
+	options.optimized	= true;
 	options.quality = 100;
-	options.matteColor = {
-		RGBColor: {
-			red: 255,
-			green: 255,
-			blue: 0
-		}
-	};
+	options.matteColor = new RGBColor();
+	options.matteColor.red = 255;
+	options.matteColor.green = 255;
+	options.matteColor.blue = 255;
 	
 	return options;
 	
