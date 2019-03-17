@@ -1,10 +1,18 @@
 # Photoshop file versions script
 
+Save an additional file version version using a shortcut.
+
+A quick video on using the script: https://youtu.be/Kvi7keEh_80 (No audio - _I'll make a better video one of these days_)
+
+![](readme_img/Example.png)
+
+
+_The naming format shown in the image is outdated... I should change it. It does get the point across though_
+
+
+## How it works
+
 Saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in a folder: "Your Photoshop Document.psd (Versions)". 
-
-![Example of saved psd files](readme_img/Example.png)
-
-A quick video on using the script: https://youtu.be/Kvi7keEh_80
 
 ## Options
 
@@ -85,7 +93,7 @@ v3 - My Document 2019.psd
 ## Things you should know
 
 * Version 1.5. tested in Photoshop CC 2019
-   * Older versions were tested in CS3 and CS6, but at this point so many changes have been made that I can't guarantee it works in older versions. I would assume it works in CS6.
+   * Older versions were tested in CS3 and later on CS6, but at this point so many changes have been made that I can't guarantee it works in older versions. I would assume it works in CS6.
 * You can always just press enter when you get the description prompt if you don't feel like adding one. 
 * If you forget the shortcut you set in Photoshop, you can check it at `File > Scripts > Photoshop File Versions`
 * Previous name was: Auto Save PSD.jsx but this new name seems more fitting as it's less about automatic saving and more about intentionally saving file versions.
