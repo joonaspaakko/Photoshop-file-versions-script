@@ -1,6 +1,6 @@
 # Photoshop file versions script
 
-Save an additional file version version using a shortcut.
+Save an additional file version using a shortcut.
 
 A quick video on using the script: https://youtu.be/Kvi7keEh_80 (No audio - _I'll make a better video one of these days_)
 
@@ -12,11 +12,19 @@ _The naming format shown in the image is outdated... I should change it. It does
 
 ## How it works
 
-Saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in a folder: "Your Photoshop Document.psd (Versions)". 
+The script saves the `.psd` file twice. First, it saves the work file, just like you would using `File > Save` and then it saves another file next to that in a folder: "Your Photoshop Document.psd (Versions)".
 
-## Options
+This allows you to keep working just like you normally would and then run the script whenever you feel you have something you want to keep and perhaps try something different.
 
-You can find these variables at the top of the `Photoshop File Versions.jsx` file.
+## Settings Dialog (since v.1.8.)
+
+You can open the settings dialog by running the script with no documents open. When you're done with the settings, click the `Save Settings` button, open your file and start using it with the new settings.
+
+![](readme_img/Settings.png)
+
+Alternatively you can find the settings at the top of the `Photoshop File Versions.jsx` file.
+
+> If the script folder contains `Photoshop File Versions.json`, the settings saved in that file will be used instead. You can reset the settings to whatever is in the `.jsx` file by trashing the `.json` file.
 
 | Variable               | Type    | Description                                                                                                            |
 |------------------------|---------|------------------------------------------------------------------------------------------------------------------------|
@@ -30,11 +38,11 @@ You can find these variables at the top of the `Photoshop File Versions.jsx` fil
 
 **Minimal filename:**
 
-Options: 
+Options:
 ```
 var useDocName = false;
 var shortDescription = false;
-````
+```
 <sup><sub>Or you can have `shortDescription` on and just skip writing the description</sub></sup>
 
 File version names:
@@ -50,7 +58,7 @@ Options:
 ```
 var useDocName = false;
 var shortDescription = true;
-````
+```
 
 File version names:
 ```
@@ -65,7 +73,7 @@ Options:
 ```
 var useDocName = true;
 var shortDescription = true;
-````
+```
 
 File version names:
 ```
@@ -80,7 +88,7 @@ Options:
 ```
 var useDocName = true;
 var shortDescription = false;
-````
+```
 <sup><sub>Or you can have `shortDescription` on and just skip writing the description</sub></sup>
 
 File version names:
@@ -94,7 +102,7 @@ v3 - My Document 2019.psd
 
 * Version 1.5. tested in Photoshop CC 2019
    * Older versions were tested in CS3 and later on CS6, but at this point so many changes have been made that I can't guarantee it works in older versions. I would assume it works in CS6.
-* You can always just press enter when you get the description prompt if you don't feel like adding one. 
+* You can always just press enter when you get the description prompt if you don't feel like adding one.
 * If you forget the shortcut you set in Photoshop, you can check it at `File > Scripts > Photoshop File Versions`
 * Previous name was: Auto Save PSD.jsx but this new name seems more fitting as it's less about automatic saving and more about intentionally saving file versions.
 
