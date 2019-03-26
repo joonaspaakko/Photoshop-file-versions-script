@@ -24,7 +24,7 @@ You can open the settings dialog by running the script with no documents open. W
 
 Alternatively you can find the settings at the top of the `Photoshop File Versions.jsx` file.
 
-> If the script folder contains `Photoshop File Versions.json`, the settings saved in that file will be used instead. You can reset the settings to whatever is in the `.jsx` file by trashing the `.json` file.
+> If the script folder contains `Photoshop File Versions.json`, the settings saved in that file will be used instead. You can reset the settings to whatever is in the `.jsx` file by trashing the `.json` file. The `.json` file is created when you first open the Settings Dialog.
 
 | Variable               | Type    | Description                                                                                                            |
 |------------------------|---------|------------------------------------------------------------------------------------------------------------------------|
@@ -102,7 +102,7 @@ v3 - My Document 2019.psd
 
 * Version 1.5. tested in Photoshop CC 2019
    * Older versions were tested in CS3 and later on CS6, but at this point so many changes have been made that I can't guarantee it works in older versions. I would assume it works in CS6.
-* You can always just press enter when you get the description prompt if you don't feel like adding one.
+* You can always just press enter when you get the description prompt if you don't feel like adding a description.
 * If you forget the shortcut you set in Photoshop, you can check it at `File > Scripts > Photoshop File Versions`
 * Previous name was: Auto Save PSD.jsx but this new name seems more fitting as it's less about automatic saving and more about intentionally saving file versions.
 
