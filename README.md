@@ -24,7 +24,7 @@ You can open the settings dialog by running the script with no documents open. W
 
 Alternatively you can find the settings at the top of the `Photoshop File Versions.jsx` file.
 
-> If the script folder contains `Photoshop File Versions.json`, the settings saved in that file will be used instead. You can reset the settings to whatever is in the `.jsx` file by trashing the `.json` file. The `.json` file is created when you first open the Settings Dialog.
+> If the script folder contains `Photoshop File Versions.json`, the settings saved in that file will be used instead. You can reset the settings to whatever is in the `.jsx` file by trashing the `.json` file. The `.json` file is created when you first save the settings in the settings dialog.
 
 | Variable               | Type    | Description                                                                                                            |
 |------------------------|---------|------------------------------------------------------------------------------------------------------------------------|
